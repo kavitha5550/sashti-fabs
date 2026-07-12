@@ -1,0 +1,34 @@
+<div class="rounded-3xl border border-[#e9d4ff] bg-[#fff5ff] p-8 shadow-sm">
+  <div *ngIf="isLoading" class="py-12 text-center text-[#8c5aae]">Loading details…</div>
+
+  <div *ngIf="!isLoading && employee" class="space-y-8">
+    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div>
+        <p class="text-xs uppercase tracking-[0.3em] text-[#8c5aae]">Employee details</p>
+        <h1 class="text-3xl font-bold text-[#4a0b4a]">{{ employee.name }}</h1>
+        <p class="text-sm text-[#6c3f8f] mt-1">ID: {{ employee.id }} • {{ employee.qualification }} • {{ employee.gender }}</p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <button type="button" class="rounded-2xl bg-[#ee82ee] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#d46fe3]" (click)="editEmployee()">Edit</button>
+        <button type="button" class="rounded-2xl bg-[#f5e3ff] px-5 py-3 text-sm font-semibold text-[#7c3d8c] transition hover:bg-[#eec2ff]" (click)="deleteEmployee()">Delete</button>
+        <button type="button" class="rounded-2xl border border-[#e9d4ff] bg-white px-5 py-3 text-sm font-semibold text-[#4a0b4a] transition hover:bg-[#faf0ff]" routerLink="/dashboard">Back</button>
+      </div>
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-2">
+      <div class="rounded-3xl border border-[#e9d4ff] bg-white p-6">
+        <p class="text-xs uppercase tracking-[0.2em] text-[#8c5aae] mb-4">Contact & address</p>
+        <p class="text-sm text-[#4a0b4a]"><span class="font-semibold">Email:</span> {{ employee.email }}</p>
+        <p class="text-sm text-[#4a0b4a] mt-2"><span class="font-semibold">Phone:</span> {{ employee.phone }}</p>
+        <p class="text-sm text-[#4a0b4a] mt-2"><span class="font-semibold">Address:</span> {{ employee.address }}</p>
+      </div>
+      <div class="rounded-3xl border border-[#e9d4ff] bg-white p-6">
+        <p class="text-xs uppercase tracking-[0.2em] text-[#8c5aae] mb-4">Profile summary</p>
+        <p class="text-sm text-[#4a0b4a]"><span class="font-semibold">DOB:</span> {{ employee.dateOfBirth | date:'mediumDate' }}</p>
+        <p class="text-sm text-[#4a0b4a] mt-2"><span class="font-semibold">Gender:</span> {{ employee.gender }}</p>
+        <p class="text-sm text-[#4a0b4a] mt-2"><span class="font-semibold">Qualification:</span> {{ employee.qualification }}</p>
+        <p class="text-sm text-[#6c3f8f] mt-4"><span class="font-semibold">Created at:</span> {{ employee.createdAt | date:'medium' }}</p>
+      </div>
+    </div>
+  </div>
+</div>

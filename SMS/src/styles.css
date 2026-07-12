@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'tailwindcss';
+
+:root {
+  --app-violet: rgba(238, 130, 238, 1);
+  --app-violet-soft: rgba(238, 130, 238, 0.18);
+  --app-violet-muted: rgba(228, 187, 239, 0.7);
+}
+
+html,
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+code,
+kbd,
+samp,
+pre,
+tt {
+  font-family: 'Courier New', Courier, monospace;
+}
+

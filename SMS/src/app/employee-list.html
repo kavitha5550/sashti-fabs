@@ -1,0 +1,39 @@
+<div class="space-y-6">
+  <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <div>
+      <p class="text-xs uppercase tracking-[0.3em] text-[#8c5aae]">Employee Management</p>
+      <h1 class="text-3xl font-bold text-[#4a0b4a]">Employee Directory</h1>
+      <p class="text-sm text-[#6c3f8f] mt-1">View, edit, and manage employee records by ID.</p>
+    </div>
+
+    <button type="button" class="inline-flex items-center justify-center rounded-2xl bg-[#ee82ee] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#d46fe3]" (click)="navigateToAdd()">
+      Add Employee
+    </button>
+  </div>
+
+  <div class="rounded-3xl border border-[#e9d4ff] bg-[#fff5ff] p-6 shadow-sm">
+    <div *ngIf="isLoading" class="py-12 text-center text-[#8c5aae]">Loading employee records…</div>
+
+    <div *ngIf="!isLoading && employees.length === 0" class="py-16 text-center text-[#8c5aae]">
+      <p class="text-lg font-semibold text-[#4a0b4a]">No employees found</p>
+      <p class="mt-2 text-sm">Use the Add Employee button to create the first employee profile.</p>
+    </div>
+
+    <div *ngIf="!isLoading && employees.length > 0" class="space-y-4">
+      <div *ngFor="let employee of employees" class="rounded-3xl border border-[#e9d4ff] bg-white p-5 shadow-[0_8px_25px_rgb(0,0,0,0.04)]">
+        <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div class="space-y-2">
+            <p class="text-sm text-[#8c5aae] uppercase tracking-[0.2em]">ID #{{ employee.id }}</p>
+            <h2 class="text-xl font-bold text-[#4a0b4a]">{{ employee.name }}</h2>
+            <p class="text-sm text-[#6c3f8f]">{{ employee.qualification }} • {{ employee.gender }} • {{ employee.dateOfBirth | date:'mediumDate' }}</p>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" (click)="navigateToDetail(employee)" class="rounded-2xl border border-[#e9d4ff] bg-[#faf0ff] px-4 py-2 text-sm text-[#5b1c5f] transition hover:bg-[#f6e0ff]">View</button>
+            <button type="button" (click)="editEmployee(employee)" class="rounded-2xl border border-[#edd1ff] bg-[#fff5ff] px-4 py-2 text-sm font-semibold text-[#4a0b4a] transition hover:border-[#d59aed]">Edit</button>
+            <button type="button" (click)="deleteEmployee(employee)" class="rounded-2xl bg-[#f5e3ff] px-4 py-2 text-sm font-semibold text-[#7c3d8c] transition hover:bg-[#eec2ff]">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
